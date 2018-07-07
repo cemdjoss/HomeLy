@@ -1,14 +1,21 @@
 <ion-header>
-  <ion-navbar>
-    <ion-title>
-      Ionic Blank
-    </ion-title>
-  </ion-navbar>
+  <ion-searchbar (ionInput)="trier($event)">
+  </ion-searchbar>
 </ion-header>
 
 <ion-content padding>
-  The world is your oyster.
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will be your guide.
-  </p>
+
+    <ion-list>
+      <ion-item *ngFor="let evenement of evenementsTries">
+        <ion-thumbnail item-start>
+          <img src="{{ evenement.img }}">
+        </ion-thumbnail>
+        <h2>{{ evenement.titre }}</h2>
+        <h4>{{ evenement.participants }}</h4>
+        <p>{{ evenement.date }}</p>
+        <p>{{ evenement.lieu }}</p>
+        <button ion-button clear item-end (click)="changePage()">View</button>
+      </ion-item>
+    </ion-list>
+
 </ion-content>
